@@ -10,7 +10,27 @@
     <%= javascript_importmap_tags %>
   </head>
 
+
   <body>
-    <%= yield %>
-  </body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <!--
+    <div class="navbar-brand">
+      <%= link_to dashboard_path, class: "navbar-item" do %>
+        <%= image_tag "logo.png", alt: "Logo" %>
+      <% end %>
+    </div>
+    -->
+    <div class="navbar-menu">
+      <div class="navbar-start" >
+        <%= link_to "My Virtual Garden", dashboard_path, class: "navbar-item" %>
+        <%= link_to "Plants", plants_path, class: "navbar-item" %>
+        <%= link_to "Plant Search", search_plants_path, class: "navbar-item" %>
+        <%= link_to "My Profile", profile_path, class: "navbar-item" %>
+        <%= link_to "About Us", about_us_path, class: "navbar-item" %>
+      </div>
+    </div>
+  </nav>
+
+  <%= yield %>
+</body>
 </html>

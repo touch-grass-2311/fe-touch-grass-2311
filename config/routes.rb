@@ -6,5 +6,33 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+
+
+  # Welcome / Login Page
+  # root '/login'
+
+  # Virtual Garden / Dashboard
+  get '/dashboard', to: 'dashboard#index'
+
+  # Plants
+  resources :plants, only: [:index, :show] do
+    collection do
+      get 'search'
+    end
+  end
+
+  # About Us Page
+  get 'about_us', to: 'about_us#index'
+
+  # profile page
+  get '/profile', to: 'users#show'
+
+  # sign up
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
+
+  # login
+  # get '/login', to: 'sessions#new'
+  # post '/login', to: 'sessions#create'
+  # delete '/logout', to: 'sessions#destroy'
 end
