@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="columns">
+    <div class="column is-full">
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image">
+                <% if @plant.image_url.present? %>
+                  <%= image_tag @plant.image_url, alt: @plant.common_name, class: 'is-rounded', style: 'width: 300px; height: 300px;' %>
+                <% else %>
+                  <p>No image available.</p>
+                <% end %>
+              </figure>
+            </div>
+            <div class="media-content" style="margin-left: 20px;">
+              <p class="title is-3"><strong><%= @plant.common_name %></strong></p>
+              <p><strong>Scientific Name:</strong> <%= @plant.scientific_name %></p>
+              <p><strong>Family:</strong> <%= @plant.family_common_name %></p>
+              <br>
+              <h2 class="title is-5">Plant Details</h2>
+              <ul>
+                <li><strong>Edible:</strong> <%= @plant.edible ? 'Yes' : 'No' %></p>
+                <li><strong>Bloom Months:</strong> <%= display_or_not_available(@plant.bloom_months) %></li>
+                <li><strong>Soil pH Range:</strong> <%= display_ph_range(@plant.ph_min, @plant.ph_max) %></li>
+                <li><strong>Light:</strong> <%= @plant.light.presence || 'Not available' %></li>
+                <li><strong>Minimum Precipitation:</strong> <%= display_precipitation(@plant.min_precipitation) %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
