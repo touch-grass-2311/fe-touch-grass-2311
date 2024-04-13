@@ -15,11 +15,11 @@ module PlantsHelper
 
   def display_ph_range(min, max)
     if min.present? && max.present? && min != 'N/A' && max != 'N/A'
-      '#{min} - #{max}'
+      "#{min} - #{max}"
     elsif min.present? && min != 'N/A'
-      '#{min} - Not available'
+      "#{min} - Not available"
     elsif max.present? && max != 'N/A'
-      'Not available - #{max}'
+      "Not available - #{max}"
     else
       'No data available'
     end
@@ -27,7 +27,7 @@ module PlantsHelper
 
   def display_precipitation(value)
     if value.present? && value != 'N/A'
-      '#{value} mm'
+      "#{value} mm"
     else
       'No data available'
     end
