@@ -11,7 +11,8 @@ class SearchPlantById
               :ph_max,
               :ph_min,
               :light,
-              :min_precipitation
+              :min_precipitation,
+              :edible_part
 
   def initialize(data)
     @common_name = data[:common_name]
@@ -25,5 +26,6 @@ class SearchPlantById
     @ph_min = data[:main_species][:growth][:ph_min]
     @light = data[:main_species][:growth][:light]
     @min_precipitation = data[:main_species][:growth][:min_precipitation]
+    @edible_part = data[:main_species][:edible_part]
   end
 end
