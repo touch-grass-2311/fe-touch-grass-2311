@@ -45,7 +45,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 gem "faraday"
 
-gem 'omniauth-github'
+# gem 'omniauth-github'
 # gem "omniauth-rails_csrf_protection"
 gem "figaro"
 
@@ -58,6 +58,8 @@ group :development, :test do
   gem "shoulda-matchers"
   gem "launchy"
   gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :development do
@@ -72,7 +74,6 @@ group :development do
 end
 
 group :test do 
-  gem 'faker'
   gem "webmock"
   gem "vcr"
 end
