@@ -1,0 +1,9 @@
+<%= form_with url: "users/login", data: { turbo: false } do |f| %>
+	<%= f.label "email" %>
+	<%= f.text_field :email, value: "enter account email" %>
+	<%= f.label "password" %>
+	<%= f.text_field :password, value: "enter account password" %>
+<% end %>
+
+<%= link_to "Log in with Github", "https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}&scope=repo", data: {turbo: false} %>
+<p>"New member and don't Github account? <%= link_to "Register here", new_user_path %></p>
