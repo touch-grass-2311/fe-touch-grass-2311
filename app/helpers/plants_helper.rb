@@ -1,6 +1,6 @@
 module PlantsHelper
   def display_or_not_available(values)
-    return 'No data available' if values.nil? || values.empty? || values == 'N/A' || 'null'
+    return 'No data available' if values.nil? || values.empty? || values == 'N/A'
 
     if values.is_a?(Array)
       formatted_months = values.map do |month|
