@@ -1,6 +1,6 @@
 class Plant
   attr_reader :id, :common_name, :scientific_name, :family_common_name, :image_url, :edible,
-              :bloom_months, :ph_max, :ph_min, :light, :min_precipitation, :family
+              :bloom_months, :ph_max, :ph_min, :light, :min_precipitation, :family, :edible_part
 
   def initialize(attributes)
     @id = attributes[:id]
@@ -15,5 +15,6 @@ class Plant
     @ph_min = attributes.dig(:ph_min)
     @light = attributes.dig(:light)
     @min_precipitation = attributes.dig(:min_precipitation, :mm)
+    @edible_part = attributes.dig(:edible_part).presence || []
   end
 end

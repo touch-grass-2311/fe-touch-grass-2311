@@ -21,6 +21,7 @@
               <h2 class="title is-5">Plant Details</h2>
               <ul>
                 <li><strong>Edible:</strong> <%= @plant.edible.present? ? 'Yes' : 'No' %></p>
+                <li><strong>Edible Part:</strong> <%= @plant.edible_part.join(', ') %></li>
                 <li><strong>Bloom Months:</strong> <%= display_or_not_available(@plant.bloom_months) %></li>
                 <li><strong>Soil pH Range:</strong> <%= display_ph_range(@plant.ph_min, @plant.ph_max) %></li>
                 <li><strong>Hours of Light Required:</strong> <%= @plant.light.present? && @plant.light != 'N/A' ? @plant.light : 'No data available' %></li>
