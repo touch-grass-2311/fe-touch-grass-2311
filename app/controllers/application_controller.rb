@@ -1,2 +1,21 @@
 class ApplicationController < ActionController::Base
+	helper_method :current_user
+
+	private
+	
+	def current_user
+		if session[:uid]
+			user_data = UsersService.find_or_create_user(
+				uid: session[:uid],
+				name: session[:name],
+				email: session[:email],
+				access_token: session[:access_token]
+			)
+		end
+		user = user_poro(user_data[:data])
+	end
+
+	def user_poro(user_data)
+		UserPoro.new(id: user_data[:id], attributes: user_data[:attributes])
+	end
 end
