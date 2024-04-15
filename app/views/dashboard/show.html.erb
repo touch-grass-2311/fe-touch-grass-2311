@@ -1,0 +1,11 @@
+<section style="margin: 20px">
+	<h1 style="font-size: 28px"><%= @user.name.split(" ").first %>'s Garden</h1>
+	<h2 style="font-size: 22px; text-decoration: underline">Plants</h2>
+	<% @user.plants.each do |plant| %>
+		<ul>
+			<li style="font-style: italic; padding: 1px 0px 1px 0px"><%= "#{plant[:name]}" %></li>
+			<li style="padding: 1px 0px 1px 0px"><%= "Quantity: #{plant[:qty]}" %></li>
+			<br>
+		</ul>
+	<% end %>
+</section>
