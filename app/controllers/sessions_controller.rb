@@ -13,9 +13,8 @@ class SessionsController < ApplicationController
 			}
 		end
 
-		parsed = JSON.parse(response.body, symbolize_names: true) 
-		
-		access_token = parsed[:access_token]
+		data = JSON.parse(response.body, symbolize_names: true) 
+		access_token = data[:access_token]
 
 		conn = Faraday.new(
 			url: "https://api.github.com",
@@ -26,12 +25,14 @@ class SessionsController < ApplicationController
 		response = conn.get("/user")
 		
 		user = JSON.parse(response.body, symbolize_names: true)
+
+		session[:uid] = user[:id]
+		session[:name] = user[:name]
+		session[:email] = user[:email]
+		session[:access_token] = access_token
 		
-		if user[:data] != nil
-			session[:user_id] = user[:id]
-			redirect_to dashboard_path
-		else
-			# Error: Could not find Github account
-		end
+		# TODO UsersFacade.find_or_create_user()
+		redirect_to dashboard_path(user)
+		# TODO Error: Could not find Github account
 	end
 end
