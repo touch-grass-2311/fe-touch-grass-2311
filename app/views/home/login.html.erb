@@ -1,9 +1,16 @@
 <%= form_with url: "users/login", data: { turbo: false } do |f| %>
-	<%= f.label "email" %>
-	<%= f.text_field :email, value: "enter account email" %>
-	<%= f.label "password" %>
-	<%= f.text_field :password, value: "enter account password" %>
+	<p style="margin: 10px 0px 0px 20px; font-size: 12px; font-family: 'Bebas Neue', sans-serif; font-weight: 400;"><%= f.label "email" %></p>
+	<p style="margin: 0px 0px 0px 20px"><%= f.text_field :email, placeholder: "enter account email", size: 30 %></p>
+	<p style="margin: 10px 0px 0px 20px; font-size: 12px; font-family: 'Bebas Neue', sans-serif; font-weight: 400;"><%= f.label "password" %></p>
+	<p style="margin: 0px 0px 10px 20px"><%= f.password_field :password, placeholder: "enter account password", size: 30 %></p>
 <% end %>
 
-<%= link_to "Log in with Github", "https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}&scope=repo", data: {turbo: false} %>
-<p>"New member and don't Github account? <%= link_to "Register here", new_user_path %></p>
+<span style="margin: 20px 0px 0px 20px; font-size: 15px; font-family: 'Bebas Neue', sans-serif; font-weight: 400;">
+	<%= link_to "https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}&scope=repo", data: {turbo: false} do %>
+		<img style="margin-top: 12px; width: 5%;" src=<%= asset_path("github-mark.svg", alt: "Github invertocat logo") %>>
+		<span style="display: flex; margin: 3px 0px 20px 20px;">Log in with Github</span>
+	<% end %>
+</span>
+<p style="margin: 10px 0px 0px 20px; font-size: 14px; font-family: 'Bebas Neue', sans-serif; font-weight: 400;">Don't have a Github account?</p> 
+<p><span style="margin: 20px 0px 0px 20px; font-size: 14px; font-family: 'Bebas Neue', sans-serif; font-weight: 400;">
+<%= link_to "Register here", new_user_path %> for a new <span style="font-weight: bold; font-style: italic">Touch Grass</span>account!</span></p>
