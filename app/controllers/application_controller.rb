@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 	
 	def current_user
 		if session[:uid]
-			user_data = UsersService.find_or_create_user(
+			user_data = SessionsService.find_or_create_user(
 				uid: session[:uid],
 				name: session[:name],
 				email: session[:email],

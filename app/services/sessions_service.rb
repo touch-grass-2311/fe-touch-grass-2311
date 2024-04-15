@@ -1,4 +1,4 @@
-class UsersService
+class SessionsService
 	def self.find_or_create_user(user_data)
 		response = conn.post("/api/v1/users") do |f|
 			f.params[:uid] = user_data[:uid]
