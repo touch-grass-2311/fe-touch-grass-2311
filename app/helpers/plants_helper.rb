@@ -32,4 +32,33 @@ module PlantsHelper
       'No data available'
     end
   end
+
+  def display_edible_part(edible_part)
+    if edible_part.is_a?(Array)
+      edible_part.join(', ').capitalize
+    elsif edible_part.present? && edible_part != 'N/A'
+      edible_part.capitalize
+    else
+      'No data available'
+    end
+  end
+
+  def display_edible(edible)
+    case edible
+    when true
+      'Yes'
+    when false
+      'No'
+    else
+      'Data not available'
+    end
+  end
+
+  def display_light(light)
+    if light.present? && light != 'N/A'
+      light
+    else
+      'No data available'
+    end
+  end
 end
