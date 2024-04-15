@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get "/", to: "home#login"
   get "/auth/github/callback", to: "sessions#create"
 
-  resources :sessions, only: [:create]
   resources :dashboard, only: [:show]
   resources :users, only: [:new]
 end
