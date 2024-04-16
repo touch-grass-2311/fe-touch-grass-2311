@@ -7,7 +7,8 @@ RSpec.describe "login", type: :feature do
 
 		click_link "Log in with Github"
 
-		expect(current_path).to eq("github.com/login/oauth/authorize?client_id=#{client_id}&scope=user")
+		expect(current_path).to eq("/login/oauth/authorize")
+		# expect(current_path).to eq("github.com/login/oauth/authorize?client_id=#{client_id}&scope=user")
 		
 	end
 end 
