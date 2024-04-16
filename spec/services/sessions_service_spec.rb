@@ -8,18 +8,18 @@ RSpec.describe "Sessions Service", type: :service do
 				  # is defined on FE
 				user_data = {
 					uid: "23423423",
-					name: "Matt Darlington",
-					email: "mdarl17@gmail.com",
-					avatar_url: "https://avatars.githubusercontent.com/u/13741144?v=4",
+					name: "OJ Simpson",
+					email: "thejuiceisloose@ididit.com",
+					avatar_url: "https://avatars.githubusercontent.com/me_in_ski_mask",
 					access_token: "aASlk3234ES243ljjio32io"
 				}
 				response_hash = SessionsService.find_or_create_user(user_data)
 
 				expect(response_hash[:data][:type]).to eq("user")
 				expect(response_hash[:data][:attributes][:uid]).to eq("23423423")
-				expect(response_hash[:data][:attributes][:name]).to eq("Matt Darlington")
-				expect(response_hash[:data][:attributes][:email]).to eq("mdarl17@gmail.com")
-				expect(response_hash[:data][:attributes][:avatar_url]).to eq("https://avatars.githubusercontent.com/u/13741144?v=4")
+				expect(response_hash[:data][:attributes][:name]).to eq("OJ Simpson")
+				expect(response_hash[:data][:attributes][:email]).to eq("thejuiceisloose@ididit.com")
+				expect(response_hash[:data][:attributes][:avatar_url]).to eq("https://avatars.githubusercontent.com/me_in_ski_mask")
 				expect(response_hash[:data][:attributes][:access_token]).to eq("aASlk3234ES243ljjio32io")
 			end
 		end
