@@ -4,6 +4,7 @@ class SessionsService
 			f.params[:uid] = user_data[:uid]
 			f.params[:name] = user_data[:name]
 			f.params[:email] = user_data[:email]
+			f.params[:avatar_url] = user_data[:avatar_url]
 			f.params[:access_token] = user_data[:access_token]
 		end
 		JSON.parse(response.body, symbolize_names: true)

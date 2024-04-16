@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 				uid: session[:uid],
 				name: session[:name],
 				email: session[:email],
+				avatar_url: session[:avatar_url],
 				access_token: session[:access_token]
 			)
 		end
