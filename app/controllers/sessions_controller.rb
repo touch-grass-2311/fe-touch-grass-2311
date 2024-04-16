@@ -29,10 +29,11 @@ class SessionsController < ApplicationController
 		session[:uid] = user[:id]
 		session[:name] = user[:name]
 		session[:email] = user[:email]
+		session[:avatar_url] = user[:avatar_url]
 		session[:access_token] = access_token
 		
 		# TODO UsersFacade.find_or_create_user()
-		redirect_to dashboard_path(user)
+		redirect_to dashboard_path(user[:id])
 		# TODO Error: Could not find Github account
 	end
 end
