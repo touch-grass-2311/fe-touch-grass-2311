@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 				access_token: session[:access_token]
 			)
 		end
-		user = user_poro(user_data[:data])
+		user = user_poro(user_data)
 	end
 
 	def user_poro(user_data)
