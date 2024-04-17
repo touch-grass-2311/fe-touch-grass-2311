@@ -80,7 +80,6 @@ end
 group :test do 
   gem "webmock"
   gem "vcr"
-  gem "factory_bot_rails"
 end
 
 gem "dartsass-rails", "~> 0.5.0"
