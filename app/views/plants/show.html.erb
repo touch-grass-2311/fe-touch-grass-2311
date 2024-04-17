@@ -22,9 +22,9 @@
         <div class="card-content">
           <div class="media-content">
             <div class="text-wrapper">
-              <p class="title is-3"><strong><%= @plant.common_name %></strong></p>
-              <p><strong>Scientific Name:</strong> <%= @plant.scientific_name %></p>
-              <p><strong>Family:</strong> <%= @plant.family_common_name.presence || @plant.family.presence || 'No data available' %></p>
+              <p class="title is-3"><strong><%= @plant.common_name.titleize %></strong></p>
+              <p><strong>Scientific Name:</strong> <%= @plant.scientific_name.titleize %></p>
+              <p><strong>Family:</strong> <%= @plant.family_common_name.titleize.presence || @plant.family.titleize.presence || 'No data available' %></p>
               <br>
               <h2 class="title is-5">Plant Details</h2>
               <ul>

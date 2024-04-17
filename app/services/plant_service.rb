@@ -11,8 +11,10 @@ class PlantService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def self.search_plants(query)
-    response = Faraday.get("#{BACKEND_URL}/search", { q: query })
+  def self.search_plants(query, page = 1, limit = 20)
+    url = "#{BACKEND_URL}/search"
+    params = { q: query, page: page, limit: limit }
+    response = Faraday.get(url, params)
     JSON.parse(response.body, symbolize_names: true)
   end
 end
