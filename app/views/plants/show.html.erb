@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="columns">
+    <div class="column is-6">
+      <div class="card square-card">
+        <div class="card-content">
+          <div class="media" style="flex-wrap: wrap; display: flex; justify-content: center; align-items: center;">
+            <div class="media-center">
+              <figure class="image" style="margin: auto; max-width: 100%; max-height: 100%;">
+                <% if @plant.image_url.present? %>
+                  <%= image_tag @plant.image_url, alt: @plant.common_name, style: 'max-width: 100%; max-height: 100%; object-fit: contain;' %>
+                <% else %>
+                  <p>No image available.</p>
+                <% end %>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column is-6">
+      <div class="card square-card">
+        <div class="card-content">
+          <div class="media-content">
+            <div class="text-wrapper">
+              <p class="title is-3"><strong><%= @plant.common_name %></strong></p>
+              <p><strong>Scientific Name:</strong> <%= @plant.scientific_name %></p>
+              <p><strong>Family:</strong> <%= @plant.family_common_name.presence || @plant.family.presence || 'No data available' %></p>
+              <br>
+              <h2 class="title is-5">Plant Details</h2>
+              <ul>
+                <li><strong>Edible:</strong> <%= display_edible(@plant.edible) %></li>
+                <li><strong>Edible Part:</strong> <%= display_edible_part(@plant.edible_part) %></li>
+                <li><strong>Bloom Months:</strong> <%= display_or_not_available(@plant.bloom_months) %></li>
+                <li><strong>Soil pH Range:</strong> <%= display_ph_range(@plant.ph_min, @plant.ph_max) %></li>
+                <li><strong>Hours of Light Required:</strong> <%= display_light(@plant.light) %></li>
+                <li><strong>Minimum Amount of Water Required:</strong> <%= display_precipitation(@plant.min_precipitation) %></li>
+              </ul>
+            </div
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

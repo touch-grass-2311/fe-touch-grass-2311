@@ -1,16 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>FeTouchGrass2311</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>FeTouchGrass2311</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <%= link_to dashboard_path, class: "navbar-item" do %>
+        <%= image_tag "logo.png", alt: "Logo" %>
+      <% end %>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+    <div id="navbarMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <%= link_to "My Virtual Garden", dashboard_path, class: "navbar-item" %>
+        <%= link_to "Plants", plants_path, class: "navbar-item" %>
+        <%= link_to "Plant Search", search_plants_path, class: "navbar-item" %>
+        <%= link_to "My Profile", profile_path, class: "navbar-item" %>
+        <%= link_to "About Us", about_us_path, class: "navbar-item" %>
+      </div>
+    </div>
+  </nav>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= yield %>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const burgerIcon = document.querySelector('.navbar-burger');
+      const navbarMenu = document.getElementById('navbarMenu');
+
+      burgerIcon.addEventListener('click', () => {
+        burgerIcon.classList.toggle('is-active');
+        navbarMenu.classList.toggle('is-active');
+      });
+    });
+  </script>
+</body>
 </html>
