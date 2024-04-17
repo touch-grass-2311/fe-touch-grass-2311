@@ -1,8 +1,6 @@
 class PlantsController < ApplicationController
 
   def index
-    response = PlantService.get_all_plants
-    @plants = response[:data].map { |plant| Plant.new(plant) }
   end
 
   def show
