@@ -7,7 +7,7 @@
             <div class="media-left">
               <figure class="image">
                 <% if @plant.image_url.present? %>
-                  <%= image_tag @plant.image_url, alt: @plant.common_name, class: 'is-rounded', style: 'width: 300px; height: 300px;' %>
+                  <%= image_tag @plant.image_url, alt: @plant.common_name, class: 'is-square', style: 'width: 320px; height: 320px;' %>
                 <% else %>
                   <p>No image available.</p>
                 <% end %>
@@ -16,15 +16,16 @@
             <div class="media-content" style="margin-left: 20px;">
               <p class="title is-3"><strong><%= @plant.common_name %></strong></p>
               <p><strong>Scientific Name:</strong> <%= @plant.scientific_name %></p>
-              <p><strong>Family:</strong> <%= @plant.family_common_name %></p>
+              <p><strong>Family:</strong> <%= @plant.family_common_name.presence || @plant.family.presence || 'No data available' %></p>
               <br>
               <h2 class="title is-5">Plant Details</h2>
               <ul>
-                <li><strong>Edible:</strong> <%= @plant.edible ? 'Yes' : 'No' %></p>
+              <li><strong>Edible:</strong> <%= display_edible(@plant.edible) %></li>
+                <li><strong>Edible Part:</strong> <%= display_edible_part(@plant.edible_part) %></li>
                 <li><strong>Bloom Months:</strong> <%= display_or_not_available(@plant.bloom_months) %></li>
                 <li><strong>Soil pH Range:</strong> <%= display_ph_range(@plant.ph_min, @plant.ph_max) %></li>
-                <li><strong>Light:</strong> <%= @plant.light.presence || 'Not available' %></li>
-                <li><strong>Minimum Precipitation:</strong> <%= display_precipitation(@plant.min_precipitation) %></li>
+                <li><strong>Hours of Light Required:</strong> <%= display_light(@plant.light) %></li>
+                <li><strong>Minimum Amount of Water Required:</strong> <%= display_precipitation(@plant.min_precipitation) %></li>
               </ul>
             </div>
           </div>
