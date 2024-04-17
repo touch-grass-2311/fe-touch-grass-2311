@@ -9,10 +9,10 @@ Rails.application.routes.draw do
 
 
   # Welcome / Login Page
-  # root '/login'
+
+get '/', to: "home#login", as: "root"
 
   # Virtual Garden / Dashboard
-  get '/dashboard', to: 'dashboard#index'
 
   # Plants
   resources :plants, only: [:index, :show] do
@@ -30,6 +30,11 @@ Rails.application.routes.draw do
   # sign up
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
+
+  get '/dashboard', to: "dashboard#index", as: "dashboard"
+  get '/dashboard/:user_id', to: "dashboard#show", as: "dashboard_show"
+
+  resources :users, only: [:new]
 
   # login
   # get '/login', to: 'sessions#new'
