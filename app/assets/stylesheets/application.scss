@@ -3,6 +3,15 @@
 
 // rails dartsass:build
 
+html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: url('/assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
 .square-card {
   position: relative;
   width: 100%;          /* Full width of the container */
