@@ -31,6 +31,6 @@ class SessionsController < ApplicationController
 		session[:avatar_url] = user[:avatar_url]
 		session[:access_token] = access_token
 		
-		redirect_to dashboard_path(user[:id])
+		redirect_to dashboard_show_path(user[:id])
 	end
 end
