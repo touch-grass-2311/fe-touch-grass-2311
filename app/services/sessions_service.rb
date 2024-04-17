@@ -1,12 +1,9 @@
 class SessionsService
 	def self.find_or_create_user(user_data)
 		response = conn.post("/api/v1/users") do |f|
-			f.params[:uid] = user_data[:uid]
-			f.params[:name] = user_data[:name]
-			f.params[:email] = user_data[:email]
-			f.params[:avatar_url] = user_data[:avatar_url]
-			f.params[:access_token] = user_data[:access_token]
+			f.params[:user] = user_data
 		end
+		
 		JSON.parse(response.body, symbolize_names: true)
 	end
 
