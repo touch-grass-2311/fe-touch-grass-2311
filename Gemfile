@@ -45,6 +45,8 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 gem "faraday"
 
+gem "bulma-rails", "~> 1.0.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
@@ -67,9 +69,10 @@ group :development do
   # gem "spring"
 end
 
-group :test do 
+group :test do
   gem 'faker'
   gem "webmock"
   gem "vcr"
 end
 
+gem "dartsass-rails", "~> 0.5.0"
