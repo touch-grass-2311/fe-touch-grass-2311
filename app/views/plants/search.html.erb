@@ -1,0 +1,18 @@
+<h1>The journy of a lifetime begins with a single plant!</h1>
+
+<%= form_with url: search_plants_path, method: :get, local: true do |f| %>
+  <%= f.label :search, "Find your plant" %>
+  <%= f.text_field :search %>
+  <%= f.submit "Find your Plant" %>
+<% end %>
+
+<% if @plants.any? %>
+  <h2> Search Results: </h2>
+  <ul>
+    <% @plants.each do |plant| %>
+      <li><%= link_to "#{plant.common_name}", plant_path(plant.id.to_i), method: :get %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No plants found.</p>
+<% end %>

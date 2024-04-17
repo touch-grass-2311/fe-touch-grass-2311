@@ -16,8 +16,12 @@ class PlantsController < ApplicationController
   end
 
   def search
-    response = PlantService.search_plants(params[:q])
-    @plants = response[:data].map { |plant| Plant.new(plant[:attributes]) }
-    render :index
+    query = params[:search]
+    response = PlantService.search_plants(query)
+    if response.present? && response[:data].present?
+      @plants = response[:data].map { |plant| Plant.new(plant) }
+    else
+      @plants = [] # Empty array if no plants found
+    end
   end
 end
