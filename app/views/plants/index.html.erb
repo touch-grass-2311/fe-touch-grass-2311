@@ -6,7 +6,7 @@
       <div class="column is-one-quarter">
         <div class="card has-text-centered">
           <div class="card-image">
-            <figure class="image is-4by3 ">
+            <figure class="image is-square ">
               <% if plant.image_url.present? %>
                 <%= link_to plant_path(plant.id) do %>
                   <%= image_tag plant.image_url, alt: plant.common_name %>
