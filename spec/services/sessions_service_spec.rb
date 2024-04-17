@@ -6,14 +6,14 @@ RSpec.describe "Sessions Service", type: :service do
 			it "can get the info of anyone who registered for the app" do
 				# TODO add plants to user_data when function to search plants array on user
 				  # is defined on FE
-				user_data = {
+				user = {
 					uid: "23423423",
 					name: "OJ Simpson",
 					email: "thejuiceisloose@ididit.com",
 					avatar_url: "https://avatars.githubusercontent.com/me_in_ski_mask",
 					access_token: "aASlk3234ES243ljjio32io"
 				}
-				response_hash = SessionsService.find_or_create_user(user_data)
+				response_hash = SessionsService.find_or_create_user(user)
 
 				expect(response_hash[:data][:type]).to eq("user")
 				expect(response_hash[:data][:attributes][:uid]).to eq("23423423")
