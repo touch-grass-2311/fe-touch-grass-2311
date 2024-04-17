@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
 get '/', to: "home#login", as: "root"
 
+# Github requiring user to approve access to Touch Grass
+get "/auth/github/callback", to: "sessions#create"
+
   # Virtual Garden / Dashboard
 
   # Plants
