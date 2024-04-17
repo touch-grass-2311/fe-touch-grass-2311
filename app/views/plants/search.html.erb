@@ -1,18 +1,63 @@
-<h1>The journy of a lifetime begins with a single plant!</h1>
+<div class="container">
+  <h1 class="title has-text-centered">The journey of a lifetime begins with a single plant!</h1>
 
-<%= form_with url: search_plants_path, method: :get, local: true do |f| %>
-  <%= f.label :search, "Find your plant" %>
-  <%= f.text_field :search %>
-  <%= f.submit "Find your Plant" %>
-<% end %>
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <%= form_with url: search_plants_path, method: :get, local: true, class: "box" do |f| %>
+        <div class="field">
+          <div class="control">
+            <%= f.text_field :search, class: "input", value: params[:search] %>
+          </div>
+        </div>
+        <%= f.hidden_field :page, value: 1, id: "search_page" %> <!-- Hidden field for 'page' parameter -->
+        <div class="field">
+          <div class="control has-text-centered">
+            <%= f.submit "Find your Plant", class: "button is-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<% if @plants.any? %>
-  <h2> Search Results: </h2>
-  <ul>
-    <% @plants.each do |plant| %>
-      <li><%= link_to "#{plant.common_name}", plant_path(plant.id.to_i), method: :get %></li>
+  <% if params[:search].present? %>
+    <% if @plants.any? %>
+      <h2 class="subtitle has-text-centered">Search Results:</h2>
+      <div class="columns is-multiline">
+        <% @plants.each do |plant| %>
+          <div class="column is-one-quarter">
+            <div class="card has-text-centered">
+              <div class="card-image">
+                <figure class="image is-square">
+                  <% if plant.image_url.present? %>
+                    <%= link_to plant_path(plant.id) do %>
+                      <%= image_tag plant.image_url, alt: plant.common_name %>
+                    <% end %>
+                  <% else %>
+                    <p>No image available.</p>
+                  <% end %>
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4 has-text-centered">
+                      <%= link_to plant.common_name.titleize.presence || plant.scientific_name.titleize.presence, plant_path(plant) %>
+                      <br>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="has-text-centered">No plants found.</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>No plants found.</p>
-<% end %>
+
+    <p class="has-text-centered">
+      <%= link_to 'Prev', search_plants_path(search: params[:search], page: params[:page].to_i - 1), class: "button is-primary" unless params[:page].to_i <= 1 %>
+      <%= link_to 'Next', search_plants_path(search: params[:search], page: params[:page].to_i + 1), class: "button is-primary" unless @plants.size < 20 %>
+    </p>
+  <% end %>
+</div>
