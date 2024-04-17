@@ -1,8 +1,6 @@
 class PlantsController < ApplicationController
 
   def index
-    response = PlantService.get_all_plants
-    @plants = response[:data].map { |plant| Plant.new(plant) }
   end
 
   def show
@@ -16,8 +14,5 @@ class PlantsController < ApplicationController
   end
 
   def search
-    response = PlantService.search_plants(params[:q])
-    @plants = response[:data].map { |plant| Plant.new(plant[:attributes]) }
-    render :index
   end
 end
