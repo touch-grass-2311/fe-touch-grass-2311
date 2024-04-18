@@ -16,15 +16,15 @@ html, body {
 
 .square-card {
   position: relative;
-  width: 100%;          /* Full width of the container */
-  padding-top: 100%;    /* Height is the same as the width, making it square */
-  overflow: hidden;     /* Prevents content from spilling outside the card */
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
 }
 
 .square-card .image {
   max-height: 100%;
   max-width: 100%;
-  object-fit: contain; /* Ensures that the aspect ratio of the image is maintained */
+  object-fit: contain;
 }
 
 .square-card .card-content {
