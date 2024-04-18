@@ -3,6 +3,8 @@
 
 // rails dartsass:build
 
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 html, body {
   height: 100%;
   min-height: 100%;
@@ -47,4 +49,8 @@ html, body {
 .text-wrapper {
   text-align: left;
   max-width: 90%;
+}
+
+.bubbly-heading {
+  font-family: 'Pacifico', cursive;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+
 <html>
 <head>
   <title>FeTouchGrass2311</title>
@@ -12,10 +13,9 @@
 <body>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand has-background-black-ter">
-      <%= link_to dashboard_path, class: "navbar-item" do %>
-        <%= image_tag "logo.png", alt: "Logo" %>
-      <% end %>
-      <a role="button" class="navbar-burger has-background-black-ter" aria-label="menu" aria-expanded="false" data-target="navbarMenu" data-controller="navbar" data-action="click->navbar#toggle">
+      <%= link_to "Touch Grass", dashboard_path, class: "navbar-item bubbly-heading is-size-5 has-text-white" %>
+
+      <a role="button" class="navbar-burger has-background-black-ter has-text-white" aria-label="menu" aria-expanded="false" data-target="navbarMenu" data-controller="navbar" data-action="click->navbar#toggle">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>

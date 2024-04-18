@@ -1,6 +1,6 @@
 <br>
 <div class="container">
-  <h1 class="title has-text-centered is-italic has-text-weight-bold has-text-black is-size-1">The journey of a lifetime begins with a single plant!</h1>
+  <h1 class="title has-text-centered is-italic has-text-white is-size-2 bubbly-heading has-text-weight-light">The journey of a lifetime begins with a single plant!</h1>
 
   <div class="columns is-centered">
     <div class="column is-half">
@@ -22,7 +22,7 @@
 
   <% if params[:search].present? %>
     <% if @plants.any? %>
-      <h2 class="subtitle has-text-centered has-text-black">Search Results:</h2>
+      <h2 class="subtitle has-text-centered has-text-white has-text-weight-semi-bold is-size-3">Search Results:</h2>
       <div class="columns is-multiline">
         <% @plants.each do |plant| %>
           <div class="column is-one-quarter">
@@ -52,7 +52,7 @@
         <% end %>
       </div>
     <% else %>
-      <p class="has-text-centered has-text-black">No plants found.</p>
+      <p class="has-text-centered has-text-white">No plants found.</p>
     <% end %>
 
     <p class="has-text-centered">
