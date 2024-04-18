@@ -3,17 +3,28 @@
 
 // rails dartsass:build
 
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: url('/assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
 .square-card {
   position: relative;
-  width: 100%;          /* Full width of the container */
-  padding-top: 100%;    /* Height is the same as the width, making it square */
-  overflow: hidden;     /* Prevents content from spilling outside the card */
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
 }
 
 .square-card .image {
   max-height: 100%;
   max-width: 100%;
-  object-fit: contain; /* Ensures that the aspect ratio of the image is maintained */
+  object-fit: contain;
 }
 
 .square-card .card-content {
@@ -38,4 +49,8 @@
 .text-wrapper {
   text-align: left;
   max-width: 90%;
+}
+
+.bubbly-heading {
+  font-family: 'Pacifico', cursive;
 }
