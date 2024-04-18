@@ -77,6 +77,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    background-image-and-styling ()
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.7)
@@ -125,7 +126,6 @@ GEM
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
-    background-image-and-styling
     ffi (1.16.3)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
