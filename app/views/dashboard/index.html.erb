@@ -1,1 +1,19 @@
-<h1>Dashboard / Virtual Garden Index</h1>
+<h1>Dashboard</h1>
+
+<h2>Welcome, <%= @user.name %>!</h2>
+
+<h3>Your Plants</h3>
+
+<% if @plants.any? %>
+  <ul>
+    <% @plants.each do |plant| %>
+      <li>
+        <%= plant.common_name %>
+        <%= link_to 'View', plant_path(plant.id), class: 'btn btn-primary' %>
+        <%= link_to 'Delete', delete_plant_path(plant.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You haven't added any plants yet.</p>
+<% end %>
