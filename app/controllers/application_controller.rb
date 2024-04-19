@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 	helper_method :current_user
 
 	private
-	
+
 	def current_user
 		if cookies.encrypted[:uid]
 			user_data = SessionsService.find_or_create_user(
@@ -11,9 +11,11 @@ class ApplicationController < ActionController::Base
 				email: cookies.encrypted[:email],
 				avatar_url: cookies.encrypted[:avatar_url],
 				access_token: cookies.encrypted[:access_token]
-			)
-		end
+				)
+			end
+			require 'pry'; binding.pry
 		user_poro(user_data[:data])
+		session[:user_id] = user_data[:data][:id]
 	end
 
 	def user_poro(user_data)

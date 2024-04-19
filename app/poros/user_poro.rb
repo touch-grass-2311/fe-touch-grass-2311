@@ -1,5 +1,5 @@
 class UserPoro
-	attr_accessor :id, :uid, :name, :email, :avatar_url, :access_token, :plants
+	attr_accessor :app_id, :uid, :name, :email, :avatar_url, :access_token, :plants
 
 	def initialize(user_data)
 		@app_id = user_data[:app_id]

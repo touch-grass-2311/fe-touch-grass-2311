@@ -1,14 +1,29 @@
 require "rails_helper"
 
-RSpec.describe "login", type: :feature do
+RSpec.describe "login", type: :feature do 
+	before(:each) do 
+		user = {
+			uid: "23423423",
+			name: "OJ Simpson",
+			email: "thejuiceisloose@ididit.com",
+			avatar_url: "https://avatars.githubusercontent.com/white_ford_bronco",
+			access_token: "aASlk3234ES243ljjio32io"
+		}
+
+		stub_request(:post, "#{}"
+
+		)
+	end
+
 	it "it finds a current user or it creates a new user" do
+		expect
+		
 		client_id = ENV['GITHUB_CLIENT_ID']
 		visit "/"
 
 		click_link "Log in with GitHub"
 
 		expect(current_path).to eq("/login/oauth/authorize")
-		# expect(current_path).to eq("github.com/login/oauth/authorize?client_id=#{client_id}&scope=user")
 
 	end
-end
+end 

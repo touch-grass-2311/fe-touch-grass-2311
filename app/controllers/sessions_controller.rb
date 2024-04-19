@@ -21,8 +21,9 @@ class SessionsController < ApplicationController
 				"Authorization": "token #{access_token}"
 			}
 		)
+
 		response = conn.get("/user")
-		
+
 		user = JSON.parse(response.body, symbolize_names: true)
 		
 		cookies.encrypted[:uid] = user[:id]

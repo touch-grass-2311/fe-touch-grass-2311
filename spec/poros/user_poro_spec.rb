@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "User" do 
 	it "exists" do
 		attrs = {
-			id: 1,
+			app_id: 1,
 			attributes: {
 			name: "Matt Darlington",
 			uid: "17747321",
@@ -24,7 +24,7 @@ RSpec.describe "User" do
 	user = UserPoro.new(attrs)
 
 	expect(user).to be_a(UserPoro)
-	expect(user.id).to eq(1)
+	expect(user.app_id).to eq(1)
 	expect(user.uid).to eq("17747321")
 	expect(user.name).to eq("Matt Darlington")
 	expect(user.email).to eq("mdarl17@gmail.com")

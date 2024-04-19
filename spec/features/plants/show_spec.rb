@@ -34,9 +34,9 @@ RSpec.describe 'Plant Show Page', type: :feature do
     expect(page).to have_content(plant_data[:attributes][:scientific_name].titleize)
 
     if plant_data[:attributes][:family_common_name].present?
-      expect(page).to have_content(plant_data[:attributes][:family_common_name])
+      expect(page).to have_content(plant_data[:attributes][:family_common_name].titleize)
     else
-      expect(page).to have_content(plant_data[:attributes][:family])
+      expect(page).to have_content(plant_data[:attributes][:family].titleize)
     end
 
     expect(page).to have_css("img[src='#{plant_data[:attributes][:image_url]}']")
