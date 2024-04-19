@@ -1,5 +1,5 @@
 class PlantService
-  BACKEND_URL = 'http://localhost:3000/api/v1'
+  BACKEND_URL = 'https://be-touch-grass-d382a872eaa4.herokuapp.com/api/v1'
 
   def self.get_all_plants
     response = Faraday.get("#{BACKEND_URL}/plants")
