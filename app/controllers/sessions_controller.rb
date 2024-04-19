@@ -24,13 +24,15 @@ class SessionsController < ApplicationController
 		response = conn.get("/user")
 		
 		user = JSON.parse(response.body, symbolize_names: true)
-
-		session[:uid] = user[:id]
-		session[:name] = user[:name]
-		session[:email] = user[:email]
-		session[:avatar_url] = user[:avatar_url]
-		session[:access_token] = access_token
 		
-		redirect_to dashboard_show_path(user[:id])
+		cookies.encrypted[:uid] = user[:id]
+		cookies.encrypted[:name] = user[:name]
+		cookies.encrypted[:email] = user[:email]
+		cookies.encrypted[:avatar_url] = user[:avatar_url]
+		cookies.encrypted[:access_token] = access_token
+		
+		uid = cookies.encrypted[:uid]
+
+		redirect_to dashboard_show_path(user_id: uid)
 	end
 end

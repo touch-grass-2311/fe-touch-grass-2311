@@ -4,13 +4,13 @@ class ApplicationController < ActionController::Base
 	private
 	
 	def current_user
-		if session[:uid]
+		if cookies.encrypted[:uid]
 			user_data = SessionsService.find_or_create_user(
-				uid: session[:uid],
-				name: session[:name],
-				email: session[:email],
-				avatar_url: session[:avatar_url],
-				access_token: session[:access_token]
+				uid: cookies.encrypted[:uid],
+				name: cookies.encrypted[:name],
+				email: cookies.encrypted[:email],
+				avatar_url: cookies.encrypted[:avatar_url],
+				access_token: cookies.encrypted[:access_token]
 			)
 		end
 		user_poro(user_data[:data])
