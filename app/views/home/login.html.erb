@@ -1,7 +1,7 @@
 <%= form_with url: "users/login", data: { turbo: false } do |f| %>
-	<p style="margin: 10px 0px 0px 20px; font-size: 12px; font-family: 'Bebas Neue', sans-serif; font-weight: 400;"><%= f.label "email" %></p>
+	<p style="margin: 10px 0px 0px 20px; font-size: 12px; font-family: 'Bebas Neue', sans-serif; font-weight: 600;"><%= f.label "email" %></p>
 	<p style="margin: 0px 0px 0px 20px"><%= f.text_field :email, placeholder: "enter account email", size: 30 %></p>
-	<p style="margin: 10px 0px 0px 20px; font-size: 12px; font-family: 'Bebas Neue', sans-serif; font-weight: 400;"><%= f.label "password" %></p>
+	<p style="margin: 10px 0px 0px 20px; font-size: 12px; font-family: 'Bebas Neue', sans-serif; font-weight: 600;"><%= f.label "password" %></p>
 	<p style="margin: 0px 0px 10px 20px"><%= f.password_field :password, placeholder: "enter account password", size: 30 %></p>
 <% end %>
 
