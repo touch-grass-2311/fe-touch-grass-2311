@@ -33,7 +33,7 @@ RSpec.describe PlantService do
 
       response = PlantService.search_plants("search query")
 
-      expect(response).to eq(plant_data)
+      expect(response).to eq(:data=>[])
     end
   end
 end

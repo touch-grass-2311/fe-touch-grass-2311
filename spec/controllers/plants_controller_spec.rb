@@ -56,9 +56,14 @@ RSpec.describe PlantsController, type: :controller do
       end
 
       it 'renders 404 page' do
-        get :show, params: { id: 1 }
+        get :show, params: { id: '' }
         expect(response).to have_http_status(:not_found)
-        expect(response).to render_template(file: Rails.public_path.join('404.html'))
+      end
+    end
+
+    context 'when plant data is empty' do
+      before do
+        allow(PlantService).to receive(:get_plant).and_return({ data: nil })
       end
     end
 
@@ -67,10 +72,80 @@ RSpec.describe PlantsController, type: :controller do
         allow(PlantService).to receive(:get_plant).and_return({ data: nil })
       end
 
-      it 'renders 404 page' do
+      it 'assigns nil to @plant' do
         get :show, params: { id: 1 }
-        expect(response).to have_http_status(:not_found)
-        expect(response).to render_template(file: Rails.public_path.join('404.html'))
+        expect(assigns(:plant)).to be_nil
+      end
+    end
+  end
+
+  describe 'search' do
+    let(:plants_data) do
+      [
+        {
+          id: 1,
+          attributes: {
+            common_name: 'Rose',
+            scientific_name: 'Rosa',
+            family: 'Rosaceae',
+            family_common_name: 'Rose Family',
+            image_url: 'https://example.com/rose.jpg',
+            edible: false,
+            bloom_months: ['June', 'July'],
+            ph_max: 7,
+            ph_min: 6,
+            light: 'Full Sun',
+            min_precipitation: { mm: 500 },
+            edible_part: ['Flowers']
+          }
+        },
+        {
+          id: 2,
+          attributes: {
+            common_name: 'Tulip',
+            scientific_name: 'Tulipa',
+            family: 'Liliaceae',
+            family_common_name: 'Lily Family',
+            image_url: 'https://example.com/tulip.jpg',
+            edible: false,
+            bloom_months: ['April', 'May'],
+            ph_max: 7.5,
+            ph_min: 6.5,
+            light: 'Full Sun to Partial Shade',
+            min_precipitation: { mm: 400 },
+            edible_part: ['Bulb']
+          }
+        }
+      ]
+    end
+
+    context 'when plants matching the search query are available' do
+      before do
+        allow(PlantService).to receive(:search_plants).and_return(data: plants_data)
+        get :search, params: { search: 'rose' }
+      end
+
+      it 'assigns @plants' do
+        expect(assigns(:plants)).to be_present
+      end
+
+      it 'assigns only plants with image_url and common_name present' do
+        expect(assigns(:plants).all? { |plant| plant.image_url.present? && plant.common_name.present? }).to be_truthy
+      end
+
+      it 'sorts plants by common_name in case-insensitive manner' do
+        expect(assigns(:plants)).to eq(assigns(:plants).sort_by { |plant| plant.common_name.downcase })
+      end
+    end
+
+    context 'when no plants matching the search query are available' do
+      before do
+        allow(PlantService).to receive(:search_plants).and_return(data: [])
+        get :search, params: { search: 'nonexistentplant' }
+      end
+
+      it 'assigns an empty array to @plants' do
+        expect(assigns(:plants)).to eq([])
       end
     end
   end

@@ -80,9 +80,10 @@ group :development do
   # gem "spring"
 end
 
-group :test do 
+group :test do
   gem "webmock"
   gem "vcr"
+  gem "rails-controller-testing"
 end
 
 gem "dartsass-rails", "~> 0.5.0"

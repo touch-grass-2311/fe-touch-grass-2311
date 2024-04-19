@@ -31,7 +31,7 @@ RSpec.describe 'Plant Show Page', type: :feature do
     visit plant_path(plant_data[:id])
 
     expect(page).to have_content(plant_data[:attributes][:common_name])
-    expect(page).to have_content(plant_data[:attributes][:scientific_name])
+    expect(page).to have_content(plant_data[:attributes][:scientific_name].titleize)
 
     if plant_data[:attributes][:family_common_name].present?
       expect(page).to have_content(plant_data[:attributes][:family_common_name])
