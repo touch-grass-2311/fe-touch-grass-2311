@@ -9,10 +9,6 @@ RSpec.describe "login", type: :feature do
 			avatar_url: "https://avatars.githubusercontent.com/white_ford_bronco",
 			access_token: "aASlk3234ES243ljjio32io"
 		}
-
-		stub_request(:post, "#{}"
-
-		)
 	end
 
 	it "it finds a current user or it creates a new user" do
