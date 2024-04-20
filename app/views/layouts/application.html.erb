@@ -13,7 +13,7 @@
 <body>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand has-background-black-ter">
-      <%= link_to "Touch Grass", dashboard_path, class: "navbar-item bubbly-heading is-size-5 has-text-white" %>
+      <p class="navbar-item bubbly-heading is-size-5 has-text-white">Touch Grass</p>
 
       <a role="button" class="navbar-burger has-background-black-ter has-text-white" aria-label="menu" aria-expanded="false" data-target="navbarMenu" data-controller="navbar" data-action="click->navbar#toggle">
         <span aria-hidden="true"></span>
@@ -23,8 +23,10 @@
     </div>
     <div id="navbarMenu" class="navbar-menu has-background-black-ter" data-navbar-target="menu">
       <div class="navbar-start has-background-primary-dark">
-        <%= link_to "My Virtual Garden", dashboard_path, class: "navbar-item has-text-white has-background-black-ter", data: { turbo: false } %>
-        <%= link_to "Plant Search", search_plants_path, class: "navbar-item has-text-white has-background-black-ter", data: { turbo: false } %>
+        <% if current_user.present? %>
+          <%= link_to "My Virtual Garden", "/dashboard/#{current_user.uid}", class: "navbar-item has-text-white has-background-black-ter", data: { turbo: false } %>
+          <%= link_to "Plant Search", search_plants_path, class: "navbar-item has-text-white has-background-black-ter", data: { turbo: false } %>
+        <% end %>
       </div>
     </div>
   </nav>
