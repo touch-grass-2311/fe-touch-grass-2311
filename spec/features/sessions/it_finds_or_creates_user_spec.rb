@@ -12,7 +12,6 @@ RSpec.describe "login", type: :feature do
 	end
 
 	it "it finds a current user or it creates a new user" do
-		expect
 		
 		client_id = ENV['GITHUB_CLIENT_ID']
 		visit "/"
