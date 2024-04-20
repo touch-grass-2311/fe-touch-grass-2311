@@ -8,8 +8,8 @@ class SessionsService
 	end
 
 	def self.conn
-		# Faraday.new(url: "http://localhost:3000") do |f|
-		Faraday.new(url: "https://be-touch-grass-d382a872eaa4.herokuapp.com") do |f|
+		Faraday.new(url: "http://localhost:3000") do |f|
+		# Faraday.new(url: "https://be-touch-grass-d382a872eaa4.herokuapp.com") do |f|
 			f.headers["Content-Type"] = "application/json"
 			f.headers["Accept"] = "*/*"
 		end
