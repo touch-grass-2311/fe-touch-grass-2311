@@ -13,12 +13,11 @@ class ApplicationController < ActionController::Base
 				access_token: cookies.encrypted[:access_token]
 				)
 			end
-			require 'pry'; binding.pry
-		user_poro(user_data[:data])
-		session[:user_id] = user_data[:data][:id]
+		user_poro(user_data&.dig(:data))
+		session[:user_id] = user_data&.dig(:data, :id)
 	end
 
 	def user_poro(user_data)
-		UserPoro.new(id: user_data[:id], attributes: user_data[:attributes])
+		UserPoro.new(id: user_data&.dig(:id), attributes: user_data&.dig(:attributes))
 	end
 end
