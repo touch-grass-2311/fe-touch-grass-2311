@@ -1,6 +1,6 @@
 # Touch Grass 🌱 Frontend Application
 
-The Touch Grass fronten application allows a user to sign in via GitHub OAuth and will create a user in the Backend database based on the information we receive from GitHub. Once a user signs in, they will have access to search plants and add plants to their dashboard where they can get specific information on the plant such as scientific name and bloom months.
+The Touch Grass frontend application allows a user to sign in via GitHub OAuth and will create a user in the Backend database based on the information we receive from GitHub. Once a user signs in, they will have access to search plants and add plants to their dashboard where they can get specific information on the plant such as scientific name and bloom months.
 
 1. [Welcome Page](#welcome-page)
 2. [Plants Search](#plants-search)
